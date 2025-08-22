@@ -1,0 +1,77 @@
+<div class="players-slider-wrapper">
+  <div class="players-slider swiper">
+    <div class="swiper-wrapper">
+      <!-- JS сгенерирует слайды -->
+    </div>
+  </div>
+</div>
+<!-- Swiper CDN -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // Данные без повторов
+  const names = ['Mustafa', 'Ahmet', 'Mehmet', 'Ali', 'Hasan', 'Murat'];
+  const images = [
+    'images/player1.webp',
+    'images/player2.webp',
+    'images/player3.webp',
+    'images/player4.webp',
+    'images/player5.webp',
+    'images/player6.webp'
+  ];
+  const scores = ['2 - 1', '2 - 2', '0 - 0', '1 - 1', '1 - 2', '2 - 0'];
+
+  // Формируем массив из 12 слайдов: сначала 1-6, потом 1-6
+  const slidesData = [];
+  for (let repeat = 0; repeat < 2; repeat++) {
+    for (let i = 0; i < 6; i++) {
+      slidesData.push({
+        name: names[i],
+        bg: images[i],
+        score: scores[i],
+        count: Math.floor(Math.random() * 201) + 100 // 100-300
+      });
+    }
+  }
+
+  // Генерируем HTML
+  const slides = slidesData.map(slide => `
+    <div class="players-list__item swiper-slide" style="background-image: url('${slide.bg}');">
+      <div class="players-list__content">
+        <div class="players-list__info">
+          <span class="players-list__name">${slide.name}</span>
+          <span class="players-list__count">${slide.count} ₺</span>
+        </div>
+        <div class="players-list__score">
+          <div class="players-list__team-logo">
+            <img src="images/Fenerbahce.webp" alt="Fenerbahçe Logo" class="matches__logo--fener">
+          </div>
+          ${slide.score}
+          <div class="players-list__team-logo">
+            <img src="images/Galatasaray.webp" alt="Galatasaray Logo" class="matches__logo--galata">
+          </div>
+        </div>
+      </div>
+    </div>
+  `);
+
+  const wrapper = document.querySelector('.players-slider .swiper-wrapper');
+  if (wrapper) {
+    wrapper.innerHTML = slides.join('');
+    const swiper = new Swiper('.players-slider', {
+      slidesPerView: 'auto',
+      slidesPerGroup: 1,
+      spaceBetween: 20,
+      loop: true,
+      centeredSlides: true,
+      autoplay: {
+        delay: 3500,
+        disableOnInteraction: false,
+      },
+      speed: 500,
+    });
+    swiper.update();
+  }
+});
+</script>

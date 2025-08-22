@@ -1,0 +1,42 @@
+.leave-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 99;
+    width: 100%;
+    max-width: 516px;
+    background: var(--vs, radial-gradient(71.71% 50% at 50% 50%, rgba(20, 160, 255, 0.20) 0%, rgba(20, 160, 255, 0.04) 100%));
+
+    &__image {
+        height: 256px;
+        background: url(images/leave-popup.webp) center no-repeat;
+    }
+
+    &__content {
+       display: flex;
+        padding: 20px 40px 40px 40px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px; 
+        align-self: stretch;
+        text-align: center;
+     }
+
+     &__text {
+        color: var(--semantic-neutral-0, #FFF);
+        font-size: 20px;
+        font-weight: 500;
+     }
+}
+
+.leave-overlay {
+     position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 19, 37, 0.90);
+    backdrop-filter: blur(20px);
+    z-index: 98;
+}

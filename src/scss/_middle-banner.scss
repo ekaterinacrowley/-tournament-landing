@@ -1,0 +1,38 @@
+.middle-banner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    text-align: center;
+    height: 500px;
+    background: url(images/middle-banner.webp) center no-repeat;
+    margin-bottom: 80px;
+
+    @media (max-width: 767px) { 
+        background-size: contain;
+        background-position: top;
+        padding-top: 40vw;
+        gap: 0;
+        height: auto;
+        margin-bottom: 40px;
+
+        h2:not(.middle-banner__title-mobile) {
+            display: none;
+        }
+
+        .main-timer {
+            width: 100%;
+        }
+    }
+
+    &__title-mobile {
+        display: none;
+         @media (max-width: 767px) { 
+            display: flex;
+            text-transform: none;
+            position: relative;
+            top:auto
+         }
+    }
+} 

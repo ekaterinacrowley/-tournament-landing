@@ -1,0 +1,141 @@
+.subscribe {
+    background: var(--semantic-brand-500, #14A0FF);
+}
+
+.subscribe-form {
+    display: flex;
+    justify-content:flex-start;
+    border-radius: 32px;
+    position: relative;
+
+    @media (max-width: 767px) { 
+        flex-direction: column;
+    }
+
+    &__content { 
+        display: flex;
+        flex-direction: column; 
+        align-items: flex-start;
+        justify-content: center;
+        gap: 16px;  
+        max-width: 567px;
+        padding: 60px 0 60px 60px;
+        
+
+            @media (min-width: 1440px) { 
+                padding: 60px 0 60px 60px;
+            }
+        @media (max-width: 767px) { 
+            max-width: 100%;
+            padding: 20px 4px;
+            align-items:flex-start;
+            text-align: left;
+
+        }
+    }
+
+        
+
+        &__description {
+            font-size: 18px;
+            line-height: 156%;
+            color: var(--text-body);
+        }
+
+    &__title {
+      span {
+        color: var(--semantic-neutral-900, #143453);
+      }
+    }
+
+    &__description {
+        font-size: 20px;
+        line-height: 156%;
+        color: var(--semantic-neutral-0);
+    }
+
+    &__form { 
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 16px;
+        width: 100%;
+
+        @media (max-width: 767px) { 
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        >div {
+            flex: 1;
+        }
+
+        input[type="email"] {
+
+            display: flex;
+            align-items: center;
+            width: 100%;
+            border: 1px solid var(--border-border-primary);
+            border-radius: 10px;
+            padding: 12px 14px 12px 44px;
+            height: 48px;
+            flex: 1;
+            font-size: 16px;
+            box-shadow: 0 0 26px 26px rgba(18, 26, 43, 0.1);
+            background: var(--background-bg-primary);
+            position: relative;
+            background-image: url("data:image/svg+xml;utf8,<svg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'><rect width='20' height='20' fill='white' fill-opacity='0.05'/><path d='M18.3334 4.99992C18.3334 4.08325 17.5834 3.33325 16.6667 3.33325H3.33341C2.41675 3.33325 1.66675 4.08325 1.66675 4.99992M18.3334 4.99992V14.9999C18.3334 15.9166 17.5834 16.6666 16.6667 16.6666H3.33341C2.41675 16.6666 1.66675 15.9166 1.66675 14.9999V4.99992M18.3334 4.99992L10.0001 10.8333L1.66675 4.99992' stroke='%2364788C' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+            background-repeat: no-repeat;
+            background-position: 16px center;
+            background-size: 20px 20px;
+            margin-bottom: 8px;
+
+            &::placeholder {
+                color: var(--text-placeholder);
+            }
+
+            &:-internal-autofill-selected {
+                position: relative;
+                background: var(--background-bg-primary) !important;
+                background-image: url("data:image/svg+xml;utf8,<svg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'><rect width='20' height='20' fill='white' fill-opacity='0.05'/><path d='M18.3334 4.99992C18.3334 4.08325 17.5834 3.33325 16.6667 3.33325H3.33341C2.41675 3.33325 1.66675 4.08325 1.66675 4.99992M18.3334 4.99992V14.9999C18.3334 15.9166 17.5834 16.6666 16.6667 16.6666H3.33341C2.41675 16.6666 1.66675 15.9166 1.66675 14.9999V4.99992M18.3334 4.99992L10.0001 10.8333L1.66675 4.99992' stroke='%2364788C' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>") !important;
+                background-repeat: no-repeat;
+            }
+        }
+
+        .btn {
+            border-radius: 16px;
+            background: var(--semantic-brand-900, #033A67);
+        }
+    }
+
+    &__privacy {
+        color: var(--base-white-20);
+        text-align: left;
+    }
+
+    &__image {
+        flex: 1;
+        z-index: 1;
+        background: url(images/subscribe-bg.webp) left top no-repeat;
+        position: absolute;
+        bottom: 0;
+        left: 567px;
+        width: 863px;
+        height: 439px;
+
+        @media (max-width: 767px) { 
+            position: relative;
+            top: auto;
+            transform: none;
+            text-align: center;
+            height: 245px;
+            width: 100vw;
+            flex: auto;
+            background: url(images/subscribe-bg-mobile.webp) left top no-repeat;
+            background-position: top center;
+            left: auto;
+            margin-left: -16px;
+            margin-right: -16px;
+        }
+    }
+}

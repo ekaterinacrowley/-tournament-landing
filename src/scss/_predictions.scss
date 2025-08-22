@@ -1,0 +1,288 @@
+.predictions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    gap: 16px;
+
+    @media (max-width: 767px) { 
+        padding-top: 40px;
+    }
+
+    &__list {
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+        gap: 16px;
+        align-self: stretch;
+        margin-top: 24px;
+
+         @media (max-width: 1024px) { 
+            flex-wrap: wrap;
+         }
+    }
+
+    &__item {
+       width: calc(100% / 4 - 11px);
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        background: var(--vs, radial-gradient(71.71% 50% at 50% 50%, rgba(20, 160, 255, 0.20) 0%, rgba(20, 160, 255, 0.04) 100%));
+        
+         @media (max-width: 1024px) { 
+            width: calc(50% - 8px);
+            max-width: 318px;
+         }
+   
+    }
+
+    &__info {
+        display: flex;
+        padding: 24px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        align-self: stretch;
+
+         @media (max-width: 767px) {
+            order: 2;
+            flex: 1;
+         }
+    }
+
+    &__name {
+        color: var(--semantic-neutral-0, #FFF);
+        font-size: 24px;
+        font-weight: 500;
+          @media (max-width: 767px) {
+            font-size: 18px;
+          }
+    }
+
+    &__text {
+        color: rgba(255, 255, 255, 0.60);
+        font-size: 16px;
+
+          @media (max-width: 767px) {
+            font-size: 12px;
+          }
+    }
+
+    &__image {
+        margin-top: auto;
+        height: 200px;
+        background-position: center;
+        background-repeat: no-repeat;
+
+         @media (max-width: 767px) {
+            order: 1;
+            margin-top: 0;
+         }
+    }
+
+    &__content {
+        display: flex;
+        padding: 10px;
+        justify-content: space-between;
+        align-items: center;
+        align-self: stretch;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+
+         @media (max-width: 767px) {
+            bottom: auto;
+            top: 145px;
+         }
+    }
+
+    &__team-logo {
+        display: flex;
+        width: 72px;
+        height: 72px;
+        padding: 10px;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        aspect-ratio: 1/1;
+        background: rgba(0, 19, 37, 0.32);
+        backdrop-filter: blur(20px);
+
+         @media (max-width: 767px) {
+            width: 36px;
+            height: 36px;
+            padding: 4px;
+         }
+    }
+
+    &__score {
+        color: #FFF;
+        text-align: center;
+        font-size: 32px;
+        font-weight: 700;
+
+         @media (max-width: 767px) {
+            font-size: 24px;
+         }
+    }
+
+    &__ai {
+        display: flex;
+        align-items: stretch;
+        gap: 16px;
+        align-self: stretch;
+        background: var(--vs, radial-gradient(71.71% 50% at 50% 50%, rgba(20, 160, 255, 0.20) 0%, rgba(20, 160, 255, 0.04) 100%));
+    
+    @media (max-width: 767px) {
+            flex-direction: column;
+            gap: 0;
+
+    }
+
+    }
+
+     &__ai-image {
+        flex: 1;
+        background: url(images/ai.webp) center no-repeat;
+        background-size: cover;
+
+         @media (max-width: 767px) {
+           height: 160px;
+           flex: auto;
+
+    }
+
+    }
+
+    &__ai-content {
+        display: flex;
+        padding: 40px 40px 40px 24px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 36px;
+        flex: 1 0 0;
+        align-self: stretch;
+        max-width: 642px;
+        min-width: 600px;
+
+        @media (max-width: 767px) {
+            padding: 12px;
+            gap: 24px;
+            min-width: 100%;
+        }
+    }
+
+    &__ai-title {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        color: #FFF;
+        font-size: 32px;
+        font-weight: 700;
+
+         @media (max-width: 1246px) {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0;
+         }
+
+        span {
+           color: rgba(255, 255, 255, 0.60);
+            font-size: 16px;
+            font-weight: 400;
+        }
+    }
+
+    &__ai-lists {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+        width: 100%;
+    }
+
+
+    &__ai-compare-list {
+        display: flex;
+        align-items: flex-start;
+        gap: 33px;
+        align-self: stretch;
+       width: 100%;
+
+       @media (max-width: 767px) {
+        flex-direction: column;
+        gap: 20px;
+       }
+
+    }
+
+    &__ai-compare-item {
+        flex: 1;
+        display: flex;
+        justify-self: stretch;
+        font-size: 18px;
+        font-weight: 500;
+
+        @media (max-width: 767px) {
+            flex: auto;
+            width: 100%;
+        }
+    }
+
+    &__ai-compare-label {
+        white-space: nowrap;
+        padding-bottom: 7px;
+
+        &--fb {
+           color: #FFEC00;
+           border-bottom: 2px solid #14A0FF;
+        }
+
+        &--draw {
+            color: #FFEC00;
+           border-bottom: 2px solid #14A0FF;
+        }
+
+        &--gs {
+            color: #DF003E;
+           border-bottom: 2px solid #DF003E;
+        }
+    }
+
+    &__ai-compare-percents {
+        flex: 1;
+        text-align: right;
+        color: #fff;
+        padding-bottom: 7px;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.23);
+    }
+
+    &__summary-list {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 33px;
+        align-self: stretch;
+       width: 100%;
+    }
+
+    &__summary-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        font-size: 18px;
+        color: rgba(255, 255, 255, 0.60);
+
+         @media (max-width: 767px) {
+            font-size: 12px;
+         }
+
+        span {
+            color: #FFF;
+        }
+    }
+}

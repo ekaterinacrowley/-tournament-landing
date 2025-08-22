@@ -1,0 +1,277 @@
+.compare {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    text-align: center;
+    gap: 30px;
+    padding-top: 80px;
+    padding-bottom: 80px;
+
+
+     @media (max-width: 767px) {
+      height: auto;
+      padding-top: 80px;
+      padding-bottom: 40px;
+     }
+
+
+     &__mathes {
+     display: grid;
+     grid-template-columns: repeat(7, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      align-items: center;
+      padding: 2.8vw;
+      grid-column-gap: 3vw;
+       grid-row-gap: 20px;
+      background: var(--vs, radial-gradient(71.71% 50% at 50% 50%, rgba(20, 160, 255, 0.20) 0%, rgba(20, 160, 255, 0.04) 100%));
+     
+       @media (min-width: 1440px) { 
+        padding: 40px;
+        grid-column-gap: 48px;
+     }
+
+     @media (max-width: 767px) { 
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+     }
+    }
+
+     &__team-logo {
+      display: flex;
+      width: 173px;
+      padding: 20px;
+      align-items: center;
+      justify-content: center;
+      aspect-ratio: 1/1;
+      background: rgba(255, 255, 255, 0.06);
+
+      &--1 {
+        grid-area: 1 / 1 / 4 / 2;
+
+        @media (max-width: 767px) { 
+         order: 2;
+         width: calc(50% - 13px);
+        }
+      }
+
+      &--2 {
+        grid-area:1 / 7 / 4 / 8;
+        @media (max-width: 767px) { 
+          order: 3;
+         width: calc(50% - 13px);
+        }
+      }
+     }
+      &__title {
+        grid-area:1 / 2 / 2 / 7;
+
+         @media (max-width: 767px) { 
+          order: 1;
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+         }
+      }
+      &__line {
+        display: flex;
+        width: 100%;
+        color: var(--semantic-neutral-0, #FFF);
+        font-size: 24px;
+        font-weight: 500;
+         grid-area: 2 / 2 / 3 / 7;
+         @media (max-width: 767px) { 
+           order: 4;
+           font-size: 16px;
+         }
+
+        &--fener {
+          text-align: left;
+          border-bottom: 4px solid #FFEC00;
+          flex: 1;
+          padding-bottom: 7px;
+        }
+        &--draws {
+          text-align: center;
+          flex: 1;
+          border-bottom: 4px solid rgba(255, 255, 255, 0.23);
+          padding-bottom: 7px;
+        }
+        &--galata {
+          text-align: right;
+          flex: 1;
+          border-bottom: 4px solid #DF003E;
+          padding-bottom: 7px;
+        }
+      }
+
+      &__prizes {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        grid-area: 3 / 2 / 4 / 7;
+        @media (max-width: 767px) { 
+          order: 5;
+        }
+
+        >div {
+          display: flex;
+          align-items: center;
+          gap: 22px;
+        }
+      }
+
+      &__prize {
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+        width: 58px;
+        height: 58px;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        @media (max-width: 767px) { 
+           width: 48px;
+            height: 48px;
+        }
+
+        &--first {
+          background-image: url(images/prize1.webp);
+          background-size: contain;
+        }
+        &--second {
+          background-image: url(images/prize2.webp);
+           background-size: contain;
+        }
+
+        label {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 32px;
+          height: 32px;
+          flex-shrink: 0;
+          background: var(--semantic-brand-500, #14A0FF);
+          border-radius: 100%;
+          color: #fff;
+          font-style: italic;
+          font-weight: 600;
+          margin-bottom: -3px;
+          margin-right: -3px;
+
+           @media (max-width: 767px) { 
+           width: 24px;
+            height: 24px;
+            font-size: 10px;
+        }
+
+        }
+      }
+
+      &__flip {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+          grid-template-rows: repeat(3, 1fr);
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        height: 258px;
+        padding: 40px 0;
+        background: var(--vs, radial-gradient(71.71% 50% at 50% 50%, rgba(20, 160, 255, 0.20) 0%, rgba(20, 160, 255, 0.04) 100%));
+      
+        @media (max-width: 767px) { 
+          display: flex;
+          flex-direction: column;
+          flex-wrap: wrap;
+          padding: 16px 0;
+          height: auto;
+
+        }
+
+        &::before {
+          content: '';
+          position: absolute;
+          left: 0;
+          bottom: -40px;
+          height: 288px;
+          width: 1316px;
+          background: url(images/coin-masked-1.webp) left center no-repeat;
+         grid-area: 1 / 1 / 4 / 2;
+         z-index: 0;
+
+           @media (max-width: 1024px) { 
+              left: -60px;
+
+              @media (max-width: 767px) { 
+              display: none;
+              }
+           }
+        }
+
+        &::after {
+          content: '';
+          position: absolute;
+          right: 0;
+          bottom: -40px;
+          height: 288px;
+          width: 1316px;
+          background: url(images/coin-masked-2.webp) right center no-repeat;
+         grid-area:1 / 7 / 4 / 8;
+       z-index: 0;
+
+         @media (max-width: 1024px) { 
+              right: -60px;
+
+               @media (max-width: 767px) { 
+                display: none;
+              }
+           }
+        }
+      
+      }
+
+      &__flip-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      &__flip-title {
+        grid-area:1 / 2 / 2 / 7;
+        position: relative;
+        z-index: 1;
+
+      }
+
+      &__subtitle {
+        color: var(--semantic-neutral-0, #FFF);
+        text-align: center;
+        font-size: 20px;
+        font-weight: 500;
+        opacity: 0.33;
+         grid-area: 2 / 2 / 3 / 7;
+         position: relative;
+      }
+
+      &__coins {
+        display: none;
+        @media (max-width: 767px) { 
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+      }
+
+      &__button {
+        max-width: 346px;
+        margin: 0 auto;
+        grid-area: 3 / 2 / 4 / 7;
+        position: relative;
+        z-index: 1;
+        margin-top: 30px;
+      }
+}
