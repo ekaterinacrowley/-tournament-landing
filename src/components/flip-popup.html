@@ -1,6 +1,6 @@
 <div class="flip-popup">
     <div class="flip-popup__content">
-        <h2>Bir Seçim İçin Çevirin</h2>
+        <h2>Yazı Tura ile Seçim</h2>
         <div class="flip-popup__image" style="position: relative;">
             <img src="images/flip-image.webp" class="flip-popup__img" style="display: block; position: relative; z-index: 2;">
              <img src="" class="flip-popup__result-img" style="display: none; position: relative; z-index: 2;">
@@ -14,7 +14,7 @@
         </div>
         <div class="btn--main flip-popup__controls">
             <a href="" class="btn flip-popup__btn">
-               Çevir
+               At
             </a>
         </div>
     </div>
@@ -57,10 +57,10 @@ document.addEventListener('DOMContentLoaded', function() {
         flipping.style.visibility = 'hidden';
         flipping.style.zIndex = '1';
       }
-      if (h2) h2.textContent = 'Flip for  a Pick';
-      if (text) text.textContent = 'Let fate pick your side.';
+      if (h2) h2.textContent = 'Yazı Tura ile Seçim';
+      if (text) text.textContent = 'Kader tarafını seçsin.';
       if (btn) {
-        btn.textContent = 'Flip';
+        btn.textContent = 'At';
         btn.removeAttribute('disabled');
         btn.setAttribute('href', '');
       }
@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function() {
             : 'Şimdi sitemizden Galatasaray bahis yapın.'; 
         }
         popup.classList.add('finished');
-        btn.textContent = 'Bet Now';
+        btn.textContent = 'Şimdi bahis yapın';
         btn.removeAttribute('disabled');
         btn.setAttribute('href', 'https://refpa58144.com/L?tag=d_4673561m_1599c_&site=4673561&ad=1599');
         btnContainer.classList.remove('disabled');  

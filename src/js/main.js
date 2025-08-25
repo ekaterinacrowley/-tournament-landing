@@ -3,7 +3,7 @@ function startRandomCounter() {
   const el = document.getElementById('random-counter');
   if (!el) return;
   function update() {
-    el.textContent = Math.floor(Math.random() * (22000 - 18000 + 1)) + 18000;
+    el.textContent = Math.floor(Math.random() * (20200 - 19700 + 1)) + 19700;
   }
   update();
   setInterval(update, 5000);
