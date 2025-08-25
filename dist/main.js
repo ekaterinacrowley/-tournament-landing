@@ -11,17 +11,13 @@
     setInterval(update, 5e3);
   }
   document.addEventListener("DOMContentLoaded", startRandomCounter);
-  function startCountdown(selector, endDate) {
-    const timer = document.querySelector(selector);
-    if (!timer)
-      return;
+  function startCountdown(timer, endDate) {
     function pad(num) {
       return String(num).padStart(2, "0");
     }
     function update() {
       const now = /* @__PURE__ */ new Date();
-      const end = new Date(endDate);
-      let diff = Math.max(0, end - now);
+      let diff = Math.max(0, endDate - now);
       const days = Math.floor(diff / (1e3 * 60 * 60 * 24));
       diff -= days * (1e3 * 60 * 60 * 24);
       const hours = Math.floor(diff / (1e3 * 60 * 60));
@@ -36,15 +32,25 @@
         items[2].querySelector(".timer__number").textContent = pad(minutes);
         items[3].querySelector(".timer__number").textContent = pad(seconds);
       }
-      if (end - now <= 0)
-        clearInterval(interval);
     }
     update();
-    const interval = setInterval(update, 1e3);
+    const interval = setInterval(() => {
+      update();
+      if (endDate - /* @__PURE__ */ new Date() <= 0)
+        clearInterval(interval);
+    }, 1e3);
   }
-  document.addEventListener("DOMContentLoaded", function() {
-    startCountdown(".timer", "2025-08-30T18:00:00");
-  });
+  function parseDate(str) {
+    const [date, time] = str.split(" ");
+    const [day, month] = date.split(".").map(Number);
+    const [hour, minute] = time.split(".").map(Number);
+    const now = /* @__PURE__ */ new Date();
+    let year = now.getFullYear();
+    if (month < now.getMonth() + 1 || month === now.getMonth() + 1 && day < now.getDate()) {
+      year += 1;
+    }
+    return new Date(year, month - 1, day, hour, minute);
+  }
   var dateStrings = [
     "23.08 20.30",
     "24.08 20.30",
@@ -80,25 +86,14 @@
     "19.04 19.00",
     "26.04 19.00"
   ];
-  function parseDate(str) {
-    const [date, time] = str.split(" ");
-    const [day, month] = date.split(".").map(Number);
-    const [hour, minute] = time.split(".").map(Number);
-    const now = /* @__PURE__ */ new Date();
-    let year = now.getFullYear();
-    if (month < now.getMonth() + 1 || month === now.getMonth() + 1 && day < now.getDate()) {
-      year += 1;
-    }
-    return new Date(year, month - 1, day, hour, minute);
-  }
   var sortedDates = dateStrings.map((str) => ({ str, date: parseDate(str) })).sort((a, b) => a.date - b.date);
-  function startAutoCountdown(selector) {
+  function startAutoCountdown(timer) {
     let currentIdx = sortedDates.findIndex((item) => item.date > /* @__PURE__ */ new Date());
     if (currentIdx === -1)
       currentIdx = sortedDates.length - 1;
     function runTimer(idx) {
       const endDate = sortedDates[idx].date;
-      startCountdown(selector, endDate);
+      startCountdown(timer, endDate);
       const checkInterval = setInterval(() => {
         if (/* @__PURE__ */ new Date() >= endDate) {
           clearInterval(checkInterval);
@@ -112,6 +107,8 @@
   }
   document.addEventListener("DOMContentLoaded", function() {
     startRandomCounter();
-    startAutoCountdown(".timer");
+    document.querySelectorAll(".timer").forEach((timer) => {
+      startAutoCountdown(timer);
+    });
   });
 })();

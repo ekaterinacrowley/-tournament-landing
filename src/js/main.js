@@ -17,21 +17,17 @@ document.addEventListener('DOMContentLoaded', startRandomCounter);
 
 /**
  * Таймер обратного отсчёта до заданной даты окончания.
- * @param {string} selector - CSS-селектор контейнера таймера.
- * @param {string|Date} endDate - Дата окончания (например, '2025-08-20T18:00:00').
+ * @param {Element} timer - DOM-элемент таймера.
+ * @param {Date} endDate - Дата окончания.
  */
-function startCountdown(selector, endDate) {
-  const timer = document.querySelector(selector);
-  if (!timer) return;
-
+function startCountdown(timer, endDate) {
   function pad(num) {
     return String(num).padStart(2, '0');
   }
 
   function update() {
     const now = new Date();
-    const end = new Date(endDate);
-    let diff = Math.max(0, end - now);
+    let diff = Math.max(0, endDate - now);
 
     const days = Math.floor(diff / (1000 * 60 * 60 * 24));
     diff -= days * (1000 * 60 * 60 * 24);
@@ -48,19 +44,34 @@ function startCountdown(selector, endDate) {
       items[2].querySelector('.timer__number').textContent = pad(minutes);
       items[3].querySelector('.timer__number').textContent = pad(seconds);
     }
-
-    if (end - now <= 0) clearInterval(interval);
   }
 
   update();
-  const interval = setInterval(update, 1000);
+  const interval = setInterval(() => {
+    update();
+    if (endDate - new Date() <= 0) clearInterval(interval);
+  }, 1000);
 }
 
 
-document.addEventListener('DOMContentLoaded', function() {
-  startCountdown('.timer', '2025-08-30T18:00:00');
-});
+/**
+ * Преобразует строку даты и времени в объект Date.
+ * @param {string} str - Строка даты и времени в формате 'DD.MM HH.mm'.
+ * @returns {Date} - Объект Date с установленной датой и временем.
+ */
+function parseDate(str) {
+  const [date, time] = str.split(' ');
+  const [day, month] = date.split('.').map(Number);
+  const [hour, minute] = time.split('.').map(Number);
+  const now = new Date();
+  let year = now.getFullYear();
 
+  // Если месяц < текущего месяца, значит это уже следующий год
+  if (month < (now.getMonth() + 1) || (month === (now.getMonth() + 1) && day < now.getDate())) {
+    year += 1;
+  }
+  return new Date(year, month - 1, day, hour, minute);
+}
 
 // Список дат и времени для отображения (отсортируем и используем)
 const dateStrings = [
@@ -99,21 +110,6 @@ const dateStrings = [
   '26.04 19.00'
 ];
 
-// Функция для преобразования строки в объект Date (год берём текущий или следующий, если дата уже прошла)
-function parseDate(str) {
-  const [date, time] = str.split(' ');
-  const [day, month] = date.split('.').map(Number);
-  const [hour, minute] = time.split('.').map(Number);
-  const now = new Date();
-  let year = now.getFullYear();
-
-  // Если месяц < текущего месяца, значит это уже следующий год
-  if (month < (now.getMonth() + 1) || (month === (now.getMonth() + 1) && day < now.getDate())) {
-    year += 1;
-  }
-  return new Date(year, month - 1, day, hour, minute);
-}
-
 // Сортируем даты по возрастанию
 const sortedDates = dateStrings
   .map(str => ({ str, date: parseDate(str) }))
@@ -130,13 +126,13 @@ function getNextDate() {
 }
 
 // Таймер с автоматическим переключением на следующую дату
-function startAutoCountdown(selector) {
+function startAutoCountdown(timer) {
   let currentIdx = sortedDates.findIndex(item => item.date > new Date());
   if (currentIdx === -1) currentIdx = sortedDates.length - 1;
 
   function runTimer(idx) {
     const endDate = sortedDates[idx].date;
-    startCountdown(selector, endDate);
+    startCountdown(timer, endDate);
 
     // Проверяем каждую секунду, не пора ли переключиться на следующую дату
     const checkInterval = setInterval(() => {
@@ -154,6 +150,10 @@ function startAutoCountdown(selector) {
 
 document.addEventListener('DOMContentLoaded', function() {
   startRandomCounter();
-  startAutoCountdown('.timer');
+
+  // Запускаем таймеры для всех элементов с классом .timer
+  document.querySelectorAll('.timer').forEach(timer => {
+    startAutoCountdown(timer);
+  });
 });
 

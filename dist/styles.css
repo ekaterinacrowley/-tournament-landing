@@ -2101,7 +2101,7 @@ header .header__mobile-btn {
 .main-block__background {
   width: 100%;
   z-index: 1;
-  background: url(../images/main-banner.webp) no-repeat top center;
+  background: url(images/main-banner.webp) no-repeat top center;
   margin-top: -13vw;
   flex: 1;
 }
@@ -2112,7 +2112,7 @@ header .header__mobile-btn {
 }
 @media (max-width: 767px) {
   .main-block__background {
-    background: url(../images/main-banner-mobile.webp) no-repeat top center;
+    background: url(images/main-banner-mobile.webp) no-repeat top center;
     background-size: cover;
     margin-top: 0;
   }

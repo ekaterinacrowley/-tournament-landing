@@ -1,0 +1,53 @@
+<div class="subscribe">
+<div class="main-width">
+  <div class="subscribe-form">
+    <div class="subscribe-form__content">
+      <h2 class="subscribe-form__title">
+        Ankete Katıl — <br>
+      <span>Bir Ödül Kazan
+</span>
+    </h2>
+      <div class="subscribe-form__description">
+       E-postanı bırak, kişisel bonusunu sana gönderelim
+      </div>
+
+      <form
+        id="email-form"
+        class="subscribe-form__form"
+        action="save.php"
+        method="POST"
+      >
+        <div>
+          <input
+            type="email"
+            name="email"
+            placeholder="E-posta adresinizi girin" 
+            required
+          /> 
+          <div class="subscribe-form__privacy">
+           Verilerinize önem veriyoruz. Gizlilik politikamızı okuyun.
+          </div>
+          <div id="status"></div>
+        </div>
+        <button
+          type="submit"
+          class="btn btn--primary btn--l"
+          data-i18n="subscribe.button"
+        >
+          Abone Ol
+        </button>
+      </form>
+    </div>
+    <div class="subscribe-form__image">
+  
+    </div>
+  </div>
+</div>
+</div>
+<script>
+  document.getElementById("email-form").addEventListener("submit", function () {
+    setTimeout(() => {
+      this.reset();
+    }, 500);
+  });
+</script>
